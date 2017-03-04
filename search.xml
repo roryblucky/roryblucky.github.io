@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[Mac下访问docker远程API]]></title>
+      <url>%2F2017%2F03%2F02%2FMac%E4%B8%8B%E8%AE%BF%E9%97%AEDocker%E8%BF%9C%E7%A8%8BAPI%2F</url>
+      <content type="text"><![CDATA[自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。 需要使用socat来绑定unix sock，操作如下： 在MAC中安装socat（本身Mac不自带socat） 1$ brew install socat 使用socat进行tcp与unix sock进行绑定 1$ socat -d TCP-LISTEN:2376,range=127.0.0.1/32,reuseaddr,fork UNIX:/var/run/docker.sock 执行完上述命令之后，进行测试：123$ curl localhost:2376/versions&#123;"Version":"1.13.1","ApiVersion":"1.26","MinAPIVersion":"1.12","GitCommit":"092cba3","GoVersion":"go1.7.5","Os":"linux","Arch":"amd64","KernelVersion":"4.9.8-moby","Experimental":true,"BuildTime":"2017-02-08T08:47:51.966588829+00:00"&#125; 完成上述操作后，就可以无休止的通过http（切记是http，不是https）来访问Docker Remote API了。 详见Remote API with Docker for Mac]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[开篇]]></title>
+      <url>%2F2017%2F03%2F02%2F%E5%BC%80%E7%AF%87%2F</url>
+      <content type="text"><![CDATA[写博客这事情，自己已经计划了很久很久。。。之前还自己用golang实现过一次博客，但是最后因为种种原因，夭折了。。。😤 这次下定决心，通过写blog进行技术积累和总结，哎，坚持吧，骚年。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>%2F2017%2F03%2F01%2Fhello-world%2F</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    </entry>
+
+    
+  
+  
+</search>
