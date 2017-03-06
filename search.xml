@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[和谐Mac下抓包工具Charles]]></title>
+      <url>%2F2017%2F03%2F06%2F%E5%92%8C%E8%B0%90Mac%E4%B8%8B%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7Charles%2F</url>
+      <content type="text"><![CDATA[之前在Windows下，抓包一直用WireShark，换到Mac上后，google了一番，都说Charles很好用。但很遗憾，作为穷逼的我发现这货居然要收费，免费试用30天，试用时还很烦，老是弹出恶心的框告诉你你正在使用试用版，5s后自动关闭。随即我就产生了和谐它的想法，废话不多说，以下是和谐办法： 破解流程写代码12345678910111213package com.xk72.charles;public final class License &#123; public static boolean a() &#123; return true; &#125; public static String b()&#123; return "Register Name"; &#125; public static String a(String key, String key) &#123; return null; &#125;&#125; 编译1$ javac -encoding UTF-8 License.java 给Jar打补丁复制charles.jar，位置：/Applications/Charles.app/Contents/Java/charles.jar接着运行：1$ jar -uvf charles.jar com/xk72/charles/License.class 最后，将打好补丁的jar替换原有的jar，切记注意备份。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Mac下访问docker远程API]]></title>
       <url>%2F2017%2F03%2F02%2FMac%E4%B8%8B%E8%AE%BF%E9%97%AEDocker%E8%BF%9C%E7%A8%8BAPI%2F</url>
       <content type="text"><![CDATA[自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。 需要使用socat来绑定unix sock，操作如下： 在MAC中安装socat（本身Mac不自带socat） 1$ brew install socat 使用socat进行tcp与unix sock进行绑定 1$ socat -d TCP-LISTEN:2376,range=127.0.0.1/32,reuseaddr,fork UNIX:/var/run/docker.sock 执行完上述命令之后，进行测试：123$ curl localhost:2376/versions&#123;"Version":"1.13.1","ApiVersion":"1.26","MinAPIVersion":"1.12","GitCommit":"092cba3","GoVersion":"go1.7.5","Os":"linux","Arch":"amd64","KernelVersion":"4.9.8-moby","Experimental":true,"BuildTime":"2017-02-08T08:47:51.966588829+00:00"&#125; 完成上述操作后，就可以无休止的通过http（切记是http，不是https）来访问Docker Remote API了。 详见Remote API with Docker for Mac]]></content>
