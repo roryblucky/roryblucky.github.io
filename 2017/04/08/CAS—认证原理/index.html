@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="sso CAS," />
 
 
 
@@ -87,40 +87,21 @@
 
 
 
-<meta name="description" content="自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。
-
-需要使用socat来绑定unix sock，操作如下：
-
-在MAC中安装socat（本身Mac不自带socat）
-1$ brew install socat
-
-使用socat进行tcp与unix sock进行绑定
-1$ socat -d TCP-LI">
+<meta name="description" content="CAS，Central Authentication Service—中央认证服务，是Yale 大学发起的一个企业级的、开源的项目，旨在为Web应用系统提供一种可靠的SSO解决方案。下面简单介绍SSO，重点介绍CAS认证过程。
+一、    SSO简介　　1.1   概念　　SSO英文全称Single Sign On，是目前比较流行的服务于企业业务整合的解决方案之一， SSO 使得在多个应用系统中，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac下访问docker远程API">
-<meta property="og:url" content="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/index.html">
+<meta property="og:title" content="CAS 认证原理">
+<meta property="og:url" content="https://roryblucky.github.io/2017/04/08/CAS—认证原理/index.html">
 <meta property="og:site_name" content="宁静致远">
-<meta property="og:description" content="自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。
-
-需要使用socat来绑定unix sock，操作如下：
-
-在MAC中安装socat（本身Mac不自带socat）
-1$ brew install socat
-
-使用socat进行tcp与unix sock进行绑定
-1$ socat -d TCP-LI">
-<meta property="og:updated_time" content="2017-03-06T01:58:41.000Z">
+<meta property="og:description" content="CAS，Central Authentication Service—中央认证服务，是Yale 大学发起的一个企业级的、开源的项目，旨在为Web应用系统提供一种可靠的SSO解决方案。下面简单介绍SSO，重点介绍CAS认证过程。
+一、    SSO简介　　1.1   概念　　SSO英文全称Single Sign On，是目前比较流行的服务于企业业务整合的解决方案之一， SSO 使得在多个应用系统中，">
+<meta property="og:image" content="http://img.blog.csdn.net/20150603000635291">
+<meta property="og:updated_time" content="2017-04-08T07:55:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下访问docker远程API">
-<meta name="twitter:description" content="自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。
-
-需要使用socat来绑定unix sock，操作如下：
-
-在MAC中安装socat（本身Mac不自带socat）
-1$ brew install socat
-
-使用socat进行tcp与unix sock进行绑定
-1$ socat -d TCP-LI">
+<meta name="twitter:title" content="CAS 认证原理">
+<meta name="twitter:description" content="CAS，Central Authentication Service—中央认证服务，是Yale 大学发起的一个企业级的、开源的项目，旨在为Web应用系统提供一种可靠的SSO解决方案。下面简单介绍SSO，重点介绍CAS认证过程。
+一、    SSO简介　　1.1   概念　　SSO英文全称Single Sign On，是目前比较流行的服务于企业业务整合的解决方案之一， SSO 使得在多个应用系统中，">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20150603000635291">
 
 
 
@@ -148,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/"/>
+  <link rel="canonical" href="https://roryblucky.github.io/2017/04/08/CAS—认证原理/"/>
 
 
 
 
 
-  <title> Mac下访问docker远程API | 宁静致远 </title>
+  <title> CAS 认证原理 | 宁静致远 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -315,7 +296,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/">
+    <link itemprop="mainEntityOfPage" href="https://roryblucky.github.io/2017/04/08/CAS—认证原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Rory Gao">
@@ -336,7 +317,7 @@
             
             
               
-                Mac下访问docker远程API
+                CAS 认证原理
               
             
           </h1>
@@ -351,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T17:29:35+08:00">
-                2017-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-08T15:54:46+08:00">
+                2017-04-08
               </time>
             
 
@@ -392,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/02/Mac下访问Docker远程API/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/02/Mac下访问Docker远程API/" itemprop="commentCount"></span>
+                <a href="/2017/04/08/CAS—认证原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/08/CAS—认证原理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -419,21 +400,89 @@
       
 
       
-        <p>自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。</p>
-<hr>
-<p>需要使用socat来绑定unix sock，操作如下：</p>
+        <p>CAS，Central Authentication Service—中央认证服务，是Yale 大学发起的一个企业级的、开源的项目，旨在为Web应用系统提供一种可靠的SSO解决方案。下面简单介绍SSO，重点介绍CAS认证过程。</p>
+<h1 id="一、-SSO简介"><a href="#一、-SSO简介" class="headerlink" title="一、    SSO简介"></a>一、    SSO简介</h1><h2 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="　　1.1   概念"></a>　　1.1   概念</h2><p>　　SSO英文全称Single Sign On，是目前比较流行的服务于企业业务整合的解决方案之一， SSO 使得在多个应用系统中，用户只需要登录一次 就可以访问所有相互信任的应用系统。</p>
+<h2 id="1-2-角色"><a href="#1-2-角色" class="headerlink" title="　　1.2  角色"></a>　　1.2  角色</h2><p>　　一般 SSO 体系主要角色有三种：</p>
+<blockquote>
 <ol>
-<li><p>在MAC中安装socat（本身Mac不自带socat）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install socat</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用socat进行tcp与unix sock进行绑定</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ socat <span class="_">-d</span> TCP-LISTEN:2376,range=127.0.0.1/32,reuseaddr,fork UNIX:/var/run/docker.sock</div></pre></td></tr></table></figure>
-</li>
+<li>User （多个）</li>
+<li>Web 应用（多个）</li>
+<li>SSO 认证中心（ 一个 ）</li>
 </ol>
-<p>执行完上述命令之后，进行测试：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ curl localhost:2376/versions</div><div class="line"></div><div class="line">&#123;<span class="string">"Version"</span>:<span class="string">"1.13.1"</span>,<span class="string">"ApiVersion"</span>:<span class="string">"1.26"</span>,<span class="string">"MinAPIVersion"</span>:<span class="string">"1.12"</span>,<span class="string">"GitCommit"</span>:<span class="string">"092cba3"</span>,<span class="string">"GoVersion"</span>:<span class="string">"go1.7.5"</span>,<span class="string">"Os"</span>:<span class="string">"linux"</span>,<span class="string">"Arch"</span>:<span class="string">"amd64"</span>,<span class="string">"KernelVersion"</span>:<span class="string">"4.9.8-moby"</span>,<span class="string">"Experimental"</span>:<span class="literal">true</span>,<span class="string">"BuildTime"</span>:<span class="string">"2017-02-08T08:47:51.966588829+00:00"</span>&#125;</div></pre></td></tr></table></figure></p>
-<hr>
-<p>完成上述操作后，就可以无休止的通过<strong>http</strong>（切记是http，不是https）来访问Docker Remote API了。</p>
-<p>详见<a href="https://forums.docker.com/t/remote-api-with-docker-for-mac-beta/15639/3" target="_blank" rel="external">Remote API with Docker for Mac</a></p>
+</blockquote>
+<h2 id="1-3-原则"><a href="#1-3-原则" class="headerlink" title="1.3  原则"></a>1.3  原则</h2><p>　　SSO 实现模式一般包括以下三个原则：</p>
+<blockquote>
+<ol>
+<li>所有的认证登录都在 SSO 认证中心进行；</li>
+<li>SSO 认证中心通过一些方法来告诉 Web 应用当前访问用户究竟是不是已通过认证的用户；</li>
+<li>SSO 认证中心和所有的 Web 应用建立一种信任关系，也就是说 web 应用必须信任认证中心。（单点信任）</li>
+</ol>
+</blockquote>
+<h1 id="二、-CAS原理介绍"><a href="#二、-CAS原理介绍" class="headerlink" title="二、    CAS原理介绍"></a>二、    CAS原理介绍</h1><h2 id="2-1-体系结构"><a href="#2-1-体系结构" class="headerlink" title="　　2.1  体系结构"></a>　　2.1  体系结构</h2><p>从结构体系看，CAS 包括两部分： CAS Server 和 CAS Client 。</p>
+<ul>
+<li><p>CAS Server负责完成对用户的认证工作，会为用户签发两个重要的票据： <strong>登录票据（TGT）和服务票据（ST）</strong> 来实现认证过程, CAS Server需要独立部署 。</p>
+</li>
+<li><p>CAS Client负责处理对客户端受保护资源的访问请求，需要对请求方进行身份认证时，重定向到 CAS Server 进行认证。准确地来说，它以Filter方式保护受保护的资源。对于访问受保护资源的每个 Web 请求，CAS Client 会分析该请求的 Http请求中是否包含 ServiceTicket（服务票据，由 CAS Server发出用于标识目标服务）。</p>
+</li>
+</ul>
+<p>CAS Client 与受保护的客户端应用部署在一起。由上可知，它符合SSO中的角色架构，如下：</p>
+<ul>
+<li>　　User （多个）</li>
+<li>　　Web 应用（多个CAS Client—与Web应用部署在一起）</li>
+<li>　　SSO 认证中心（ 一个CAS Server—独立部署）</li>
+</ul>
+<h2 id="2-2-核心票据"><a href="#2-2-核心票据" class="headerlink" title="　　2.2  核心票据"></a>　　2.2  核心票据</h2><p>CAS的核心就是其Ticket，及其在Ticket之上的一系列处理操作。<br>CAS的主要票据有TGT、ST、PGT、PGTIOU、PT，其中TGT、ST是CAS1.0(基础模式)协议中就有的票据，PGT、PGTIOU、PT是CAS2.0(代理模式)协议中有的票据。这里主要介绍CAS1.0—基础模式中的几种票据。</p>
+<h3 id="TGT（Ticket-Grangting-Ticket）"><a href="#TGT（Ticket-Grangting-Ticket）" class="headerlink" title="　　TGT（Ticket Grangting Ticket）"></a>　　TGT（Ticket Grangting Ticket）</h3><p>　　　　TGT是CAS为用户签发的登录票据，拥有了TGT，用户就可以证明自己在CAS成功登录过。TGT封装了Cookie值以及此Cookie值对应的用户信息。<strong>==用户在CAS认证成功后，生成一个TGT对象，放入自己的缓存（Session）；同时，CAS生成cookie（叫TGC，个人理解，其实就是TGT的SessionId），写入浏览器。TGT对象的ID就是cookie的值，当HTTP再次请求到来时，如果传过来的有CAS生成的cookie，则CAS以此cookie值（SessionId）为key查询缓存中有无TGT（Session），如果有的话，则说明用户之前登录过，如果没有，则用户需要重新登录。==</strong>
+　　　　</p>
+<h3 id="TGC-（Ticket-granting-cookie）"><a href="#TGC-（Ticket-granting-cookie）" class="headerlink" title="　　TGC （Ticket-granting cookie）"></a>　　TGC （Ticket-granting cookie）</h3><p>　　　　上面提到，CAS-Server生成TGT放入自己的Session中，而TGC就是这个Session的唯一标识（SessionId），以Cookie形式放到浏览器端，是CAS Server用来明确用户身份的凭证。（如果你理解Session的存放原理的话就很好理解）
+　　　　</p>
+<h3 id="ST（ServiceTicket）"><a href="#ST（ServiceTicket）" class="headerlink" title="　　ST（ServiceTicket）"></a>　　ST（ServiceTicket）</h3><p>　　　　ST是CAS为用户签发的访问<strong>某一服务</strong>票据。**==用户访问service时，service发现用户没有ST，则要求用户去CAS获取ST。用户向CAS发出获取ST的请求，如果用户的请求中包含cookie，则CAS会以此cookie值为key查询缓存中有无TGT，如果存在TGT，则用此TGT签发一个ST，返回给用户。用户凭借ST去访问service，service拿ST去CAS验证，验证通过后，允许用户访问资源。</p>
+<p>为了保证ST的安全性：</p>
+<blockquote>
+<p>ST 是基于随机生成的，没有规律性。</p>
+<p>CAS规定 ST 只能存活一定的时间，然后 CAS Server 会让它失效。</p>
+<p>CAS 协议规定ST只能使用一次，无论 Service Ticket 验证是否成功，CASServer 都会清除服务端缓存中的该 Ticket ，从而可以确保一个 Service Ticket 不被使用两次==。**</p>
+</blockquote>
+<h2 id="2-3-认证过程"><a href="#2-3-认证过程" class="headerlink" title="　　2.3  认证过程"></a>　　2.3  认证过程</h2><p>　　这里用一个终端，对两个CAS—Client的三次请求来说明CAS的认证过程，主要是TGT、TGC、ST等票据的传递，以及如何实现的SSO。<br>　　如下图，前两次请求都是访问的CAS—Client1，主要来说明TGT、TGC、ST等票据的作用；然后第三次请求访问的是CAS—Client2，主要来说明如何实现的SSO。</p>
+<p>   <img src="http://img.blog.csdn.net/20150603000635291" alt="CAS流程示意图">  </p>
+<h4 id="Request1"><a href="#Request1" class="headerlink" title="　　Request1"></a>　　Request1</h4><ul>
+<li>　　　　【第一步】终端第一次访问CAS—Client1，AuthenticationFilter会截获此请求：
+  　　　　</li>
+</ul>
+<blockquote>
+<p> 1.首先，检测本地Session没有缓存有用户信息；</p>
+<p> 2、然后，检测到请求信息中没有ST；</p>
+<p>3、所以，CAS—Client1将请求重定向到CAS—Server，并传递 Service （也就是要访问的目的资源地址，以便登录成功过后转回该地址），例：【<a href="https://cas:8443/cas/login?service=http0%3A8081%2F】；" target="_blank" rel="external">https://cas:8443/cas/login?service=http0%3A8081%2F】；</a></p>
+</blockquote>
+<ul>
+<li>　　　　【第二步】终端第一次访问CAS—Server：</li>
+</ul>
+<blockquote>
+<p>1、CAS—Server检测到请求信息中没有TGC，所以跳转到自己的登录页；</p>
+<p>2、终端输入用户名、密码登录CAS—Server，认证成功后，CAS—Server会生成登录票据—TGT（集成了用户信息与ST），并随机生成一个服务票据—ST与CAS会话标识—TGC。TGT实际上就是Session，而TGC就是这标识这个Session存到Cookie中的SessionID；ST即，根据Service生成Ticket。</p>
+<p>3、然后，CAS—Server会将Ticket加在url 后面，然后将请求redirect 回客户web 应用，例如URL为【<a href="http://192.168.1.90:8081/web1/?ticket=ST-5-Sx6eyvj7cPPCfn0pMZ】" target="_blank" rel="external">http://192.168.1.90:8081/web1/?ticket=ST-5-Sx6eyvj7cPPCfn0pMZ】</a></p>
+</blockquote>
+<ul>
+<li>　　　　【第三步】这时，终端携带ticket再次请求CAS—Client1：</li>
+</ul>
+<blockquote>
+<p>1、这时客户端的AuthenticationFilter看到ticket 参数后，会跳过，由其后面的TicketValidationFilter 处理；</p>
+<p>2、TicketValidationFilter 会利用httpclient工具访问cas 服务的/serviceValidate 接口, 将ticket 、service 都传到此接口，由此接口验证ticket 的有效性，即向CAS—Server验证ST的有效性。</p>
+<p>3、TicketValidationFilter如果得到验证成功的消息，就会把用户信息写入web 应用的session里。至此为止，SSO 会话就建立起来了。</p>
+</blockquote>
+<h4 id="Request2"><a href="#Request2" class="headerlink" title="　　Request2"></a>　　Request2</h4><p>　　　　上面说了SSO 会话已经建立起来了，这时用户在同一浏览器里第二次访问此web 应用（CAS—Client1）时，AuthenticationFilter会在session 里读取到用户信息，这就代表用户已成功登录，所以就不会去CAS 认证了。</p>
+<h4 id="Request3"><a href="#Request3" class="headerlink" title="　　Request3"></a>　　Request3</h4><ul>
+<li>　　　　【第一步】与Request1是完全一样的，如下：终端第一次访问CAS—Client2，AuthenticationFilter会截获此请求：</li>
+</ul>
+<blockquote>
+<p>1、首先，检测本地Session没有缓存有用户信息；</p>
+<p>2、然后，检测到请求信息中没有ST；</p>
+<p>3、所以，CAS—Client1将请求重定向到CAS—Server，并传递 Service （也就是要访问的目的资源地址，以便登录成功过后转回该地址），例：【<a href="https://cas:8443/cas/login?service=http0%3A8081%2F】" target="_blank" rel="external">https://cas:8443/cas/login?service=http0%3A8081%2F】</a></p>
+</blockquote>
+<ul>
+<li>　　　　【第二步】然后，终端第二次访问CAS—Server：此时，Request中会带有上次生成的TGC，然后根据TGC（SessionID）去查找是否有对应的TGT（Session），如果有，代表此用户已成功登录过，所以此时用户不必再去登录页登录（SSO的体现），而CAS—Server会直接用找到的TGT签发一个ST，然后重定向到CAS—Client2，剩下的如Request1中的【第三步】就完全一样了。</li>
+</ul>
+<h1 id="三、-总结"><a href="#三、-总结" class="headerlink" title="三、    总结"></a>三、    总结</h1><p>　　　　CAS认证过程中的核心概念即是几个 <strong>【==票据==】</strong>，实际上其实就是1个Cookie和N个Session。包括CAS1.0（基础模式）的TGT、ST、TGC；以及CAS2.0（代理模式）的PGT、PT、PGTIOU等。认证过程，即是这几个 <strong>票据的传递与对比验证的过程</strong>。</p>
 
       
     </div>
@@ -457,7 +506,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
+            <a href="/tags/sso-CAS/" rel="tag"># sso CAS</a>
           
         </div>
       
@@ -470,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/02/开篇/" rel="next" title="开篇">
-                <i class="fa fa-chevron-left"></i> 开篇
+              <a href="/2017/03/12/SAML2-0学习/" rel="next" title="SSO之SAML2.0">
+                <i class="fa fa-chevron-left"></i> SSO之SAML2.0
               </a>
             
           </div>
@@ -479,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/06/和谐Mac下抓包工具Charles/" rel="prev" title="和谐Mac下抓包工具Charles">
-                和谐Mac下抓包工具Charles <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,8 +553,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/02/Mac下访问Docker远程API/"
-           data-title="Mac下访问docker远程API" data-url="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/">
+      <div class="ds-thread" data-thread-key="2017/04/08/CAS—认证原理/"
+           data-title="CAS 认证原理" data-url="https://roryblucky.github.io/2017/04/08/CAS—认证原理/">
       </div>
     
   </div>
@@ -533,8 +578,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -630,6 +684,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、-SSO简介"><span class="nav-number">1.</span> <span class="nav-text">一、    SSO简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-概念"><span class="nav-number">1.1.</span> <span class="nav-text">　　1.1   概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-角色"><span class="nav-number">1.2.</span> <span class="nav-text">　　1.2  角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-原则"><span class="nav-number">1.3.</span> <span class="nav-text">1.3  原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、-CAS原理介绍"><span class="nav-number">2.</span> <span class="nav-text">二、    CAS原理介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-体系结构"><span class="nav-number">2.1.</span> <span class="nav-text">　　2.1  体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-核心票据"><span class="nav-number">2.2.</span> <span class="nav-text">　　2.2  核心票据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TGT（Ticket-Grangting-Ticket）"><span class="nav-number">2.2.1.</span> <span class="nav-text">　　TGT（Ticket Grangting Ticket）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TGC-（Ticket-granting-cookie）"><span class="nav-number">2.2.2.</span> <span class="nav-text">　　TGC （Ticket-granting cookie）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ST（ServiceTicket）"><span class="nav-number">2.2.3.</span> <span class="nav-text">　　ST（ServiceTicket）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-认证过程"><span class="nav-number">2.3.</span> <span class="nav-text">　　2.3  认证过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Request1"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">　　Request1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Request2"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">　　Request2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Request3"><span class="nav-number">2.3.0.3.</span> <span class="nav-text">　　Request3</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、-总结"><span class="nav-number">3.</span> <span class="nav-text">三、    总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
