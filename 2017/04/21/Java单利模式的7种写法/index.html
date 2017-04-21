@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="Java Singleton 单例," />
 
 
 
@@ -87,40 +87,27 @@
 
 
 
-<meta name="description" content="自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。
-
-需要使用socat来绑定unix sock，操作如下：
-
-在MAC中安装socat（本身Mac不自带socat）
-1$ brew install socat
-
-使用socat进行tcp与unix sock进行绑定
-1$ socat -d TCP-LI">
+<meta name="description" content="去一家公司面试，面试官问我单例模式的写法，写一个线程安全且无锁的，经常写的是懒汉和饿汉，一时没有想起来内部静态类，所以总结下
+单例模式的几种写法
+第一种 线程安全且无锁
+public class Singleton &amp;#123;    private Singleton() &amp;#123;&amp;#125;        public static Singleton ge">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac下访问docker远程API">
-<meta property="og:url" content="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/index.html">
+<meta property="og:title" content="Java单利模式的7种写法">
+<meta property="og:url" content="https://roryblucky.github.io/2017/04/21/Java单利模式的7种写法/index.html">
 <meta property="og:site_name" content="宁静致远">
-<meta property="og:description" content="自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。
+<meta property="og:description" content="去一家公司面试，面试官问我单例模式的写法，写一个线程安全且无锁的，经常写的是懒汉和饿汉，一时没有想起来内部静态类，所以总结下
+单例模式的几种写法
+第一种 线程安全且无锁
 
-需要使用socat来绑定unix sock，操作如下：
-
-在MAC中安装socat（本身Mac不自带socat）
-1$ brew install socat
-
-使用socat进行tcp与unix sock进行绑定
-1$ socat -d TCP-LI">
-<meta property="og:updated_time" content="2017-03-06T01:58:41.000Z">
+public class Singleton &amp;#123;    private Singleton() &amp;#123;&amp;#125;        public static Singleton ge">
+<meta property="og:updated_time" content="2017-04-21T02:36:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下访问docker远程API">
-<meta name="twitter:description" content="自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。
+<meta name="twitter:title" content="Java单利模式的7种写法">
+<meta name="twitter:description" content="去一家公司面试，面试官问我单例模式的写法，写一个线程安全且无锁的，经常写的是懒汉和饿汉，一时没有想起来内部静态类，所以总结下
+单例模式的几种写法
+第一种 线程安全且无锁
 
-需要使用socat来绑定unix sock，操作如下：
-
-在MAC中安装socat（本身Mac不自带socat）
-1$ brew install socat
-
-使用socat进行tcp与unix sock进行绑定
-1$ socat -d TCP-LI">
+public class Singleton &amp;#123;    private Singleton() &amp;#123;&amp;#125;        public static Singleton ge">
 
 
 
@@ -148,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/"/>
+  <link rel="canonical" href="https://roryblucky.github.io/2017/04/21/Java单利模式的7种写法/"/>
 
 
 
 
 
-  <title> Mac下访问docker远程API | 宁静致远 </title>
+  <title> Java单利模式的7种写法 | 宁静致远 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -315,7 +302,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/">
+    <link itemprop="mainEntityOfPage" href="https://roryblucky.github.io/2017/04/21/Java单利模式的7种写法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Rory Gao">
@@ -336,7 +323,7 @@
             
             
               
-                Mac下访问docker远程API
+                Java单利模式的7种写法
               
             
           </h1>
@@ -351,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T17:29:35+08:00">
-                2017-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-21T10:25:19+08:00">
+                2017-04-21
               </time>
             
 
@@ -392,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/02/Mac下访问Docker远程API/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/02/Mac下访问Docker远程API/" itemprop="commentCount"></span>
+                <a href="/2017/04/21/Java单利模式的7种写法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/21/Java单利模式的7种写法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -419,21 +406,31 @@
       
 
       
-        <p>自己在进行docker部署时，发现Docker for MAC 默认没有开启tcp访问，google之后，有以下的workaround，记录以下。</p>
-<hr>
-<p>需要使用socat来绑定unix sock，操作如下：</p>
+        <p>去一家公司面试，面试官问我单例模式的写法，写一个线程安全且无锁的，经常写的是懒汉和饿汉，一时没有想起来内部静态类，所以总结下</p>
+<h1 id="单例模式的几种写法"><a href="#单例模式的几种写法" class="headerlink" title="单例模式的几种写法"></a>单例模式的几种写法</h1><ol>
+<li>第一种 线程安全且无锁</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Nested.instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Nested</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol>
-<li><p>在MAC中安装socat（本身Mac不自带socat）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install socat</div></pre></td></tr></table></figure>
+<li><p>第二种 线程不安全(懒汉)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</div><div class="line">            instance = <span class="keyword">new</span> Singleton();    </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>使用socat进行tcp与unix sock进行绑定</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ socat <span class="_">-d</span> TCP-LISTEN:2376,range=127.0.0.1/32,reuseaddr,fork UNIX:/var/run/docker.sock</div></pre></td></tr></table></figure>
+<li><p>第三种 线程安全(懒汉)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</div><div class="line">            instance = <span class="keyword">new</span> Singleton();    </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第四种 饿汉</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第五种 饿汉</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Singleton instance = <span class="keyword">null</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        instance = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第六种 枚举</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;</div><div class="line">    INSTANCE;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whateverMethod</span><span class="params">()</span> </span>&#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第七种 双重校验锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> volatite <span class="keyword">static</span> Singleton instance;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</div><div class="line">                <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</div><div class="line">                    singleton = <span class="keyword">new</span> Singleton()</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>执行完上述命令之后，进行测试：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ curl localhost:2376/versions</div><div class="line"></div><div class="line">&#123;<span class="string">"Version"</span>:<span class="string">"1.13.1"</span>,<span class="string">"ApiVersion"</span>:<span class="string">"1.26"</span>,<span class="string">"MinAPIVersion"</span>:<span class="string">"1.12"</span>,<span class="string">"GitCommit"</span>:<span class="string">"092cba3"</span>,<span class="string">"GoVersion"</span>:<span class="string">"go1.7.5"</span>,<span class="string">"Os"</span>:<span class="string">"linux"</span>,<span class="string">"Arch"</span>:<span class="string">"amd64"</span>,<span class="string">"KernelVersion"</span>:<span class="string">"4.9.8-moby"</span>,<span class="string">"Experimental"</span>:<span class="literal">true</span>,<span class="string">"BuildTime"</span>:<span class="string">"2017-02-08T08:47:51.966588829+00:00"</span>&#125;</div></pre></td></tr></table></figure></p>
-<hr>
-<p>完成上述操作后，就可以无休止的通过<strong>http</strong>（切记是http，不是https）来访问Docker Remote API了。</p>
-<p>详见<a href="https://forums.docker.com/t/remote-api-with-docker-for-mac-beta/15639/3" target="_blank" rel="external">Remote API with Docker for Mac</a></p>
 
       
     </div>
@@ -457,7 +454,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
+            <a href="/tags/Java-Singleton-单例/" rel="tag"># Java Singleton 单例</a>
           
         </div>
       
@@ -470,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/02/开篇/" rel="next" title="开篇">
-                <i class="fa fa-chevron-left"></i> 开篇
+              <a href="/2017/04/08/CAS—认证原理/" rel="next" title="CAS 认证原理">
+                <i class="fa fa-chevron-left"></i> CAS 认证原理
               </a>
             
           </div>
@@ -479,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/06/和谐Mac下抓包工具Charles/" rel="prev" title="和谐Mac下抓包工具Charles">
-                和谐Mac下抓包工具Charles <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,8 +501,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/02/Mac下访问Docker远程API/"
-           data-title="Mac下访问docker远程API" data-url="https://roryblucky.github.io/2017/03/02/Mac下访问Docker远程API/">
+      <div class="ds-thread" data-thread-key="2017/04/21/Java单利模式的7种写法/"
+           data-title="Java单利模式的7种写法" data-url="https://roryblucky.github.io/2017/04/21/Java单利模式的7种写法/">
       </div>
     
   </div>
@@ -533,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -630,6 +632,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式的几种写法"><span class="nav-number">1.</span> <span class="nav-text">单例模式的几种写法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
